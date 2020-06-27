@@ -1,31 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { FormGroup, FormControl } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
+  providers: [AuthService]
 })
 export class LoginComponent implements OnInit {
+  public isLogged = false;
+  public user: any;
 
-  loginUserData = {};
+  loginForm = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl('')
+  })
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(){}
-    
-  loginUser() {
-    this.authenticationService.loginUser(this.loginUserData)
-    .subscribe(
-      res => {
-        console.log(res)
-        localStorage.setItem('token', res.token)
-        this.router.navigate(['/produtos'])
-
-      },
-      err => console.log(err)
-    )
+  async ngOnInit() {}
+  
+  async onLogin(){
+    const {email, password} = this.loginForm.value;
+    try{
+      const user = await this.authService.login(email, password);
+      if(user){
+        this.router.navigate(['/produtos']);
+      }
+    }catch(error){
+      console.log(error);
+    }
   }
-
 }

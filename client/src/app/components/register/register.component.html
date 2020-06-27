@@ -1,35 +1,26 @@
 <div class="registerBackground">
   <div class="logoBackGround">
-    <img  class="logoTam" [routerLink]="['/logar']" src="https://i.imgur.com/VmtJROa.png" />
+    <img  class="logoTam" routerLink="/logar" src="https://i.imgur.com/VmtJROa.png" />
   </div>
-  <form class="registerPosition container p-4" #formRegister="ngForm">
-    <h2>Novo Usuario</h2>
-    <div class="form-group">
-      <label for="name">Nome</label>
-      <input type="text" #name="ngModel" name="name" class="form-control" [(ngModel)]="registerUserData.name" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-      <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-        <div *ngIf="f.firstName.errors.required">Preencha o campo Nome</div>
+  <div class="card-body">
+    <form class="registerPosition container p-4" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+      <h2>Novo Usuario</h2>
+      <div class="form-group">
+        <label for="username">Email</label>
+        <input type="email" class="form-control" formControlName="email"/>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="username">Email</label>
-      <input type="email" #name="ngModel" name="email" class="form-control" [(ngModel)]="registerUserData.email" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-      <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-        <div *ngIf="f.username.errors.required">Preencha o campo Usuario</div>
+      <div class="form-group">
+        <label for="password">Senha</label>
+        <input type="password" class="form-control" formControlName="password"/>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="password">Senha</label>
-      <input type="password" #name="ngModel" name="password" class="form-control" [(ngModel)]="registerUserData.password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-        <div *ngIf="f.password.errors.required">Preencha o campo Senha</div>
-        <div *ngIf="f.password.errors.minlength">A senha deve ter no minimo 6 caracteres</div>
+      <div class="form-group">
+        <button type="submit" href="/logar" [disabled]="loading" class="btn btn-primary">Registrar</button>
+        <img *ngIf="loading" src="../../../assets/loading.gif" />
+        <a routerLink="/logar" class="btn btn-link">Cancelar</a>
       </div>
-    </div>
-    <div class="form-group">
-      <button (click)="registerUser()" [disabled]="loading" class="btn btn-primary">Registrar</button>
-      <img *ngIf="loading" src="../../../assets/loading.gif" />
-      <a [routerLink]="['/logar']" class="btn btn-link">Cancelar</a>
-    </div>
-  </form>
+      <div class="form-group mt-3">
+        <p>Você ja tem uma conta? <a routerLink="/logar">Logar</a></p>
+      </div>
+    </form>
+  </div>
 </div>

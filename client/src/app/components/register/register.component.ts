@@ -1,29 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
+  providers: [AuthService]
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) { }
+  public isLogged = false;
+  public user: any;
 
-  registerUserData={}
+  registerForm = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl('')
+  })
 
-  ngOnInit() { }
+  constructor(private authService: AuthService, private router: Router) {}
 
-  registerUser() {
-    this.authenticationService.registerUser(this.registerUserData)
-    .subscribe(
-      res => {
-        console.log(res)
-        localStorage.setItem('token', res.token)
-        this.router.navigate(['/produtos'])
-      },
-      err => console.log(err)
-    )
+  async ngOnInit() {}
+
+  async onRegister(){
+    const {email, password} = this.registerForm.value;
+    try{
+      const user = await this.authService.register(email, password);
+      if(user){
+        this.router.navigate(['/home'])
+      }
+    }catch(error){
+      console.log(error);
+    }
   }
+
 }
