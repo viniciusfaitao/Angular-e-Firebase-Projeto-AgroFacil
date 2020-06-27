@@ -28,7 +28,7 @@ export class RegisterComponent {
     try{
       const user = await this.authService.register(email, password);
       if(user){
-        this.router.navigate(['/home'])
+        this.router.navigate(['/produtos'])
       }
     }catch(error){
       console.log(error);

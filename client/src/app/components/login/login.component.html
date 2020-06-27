@@ -9,14 +9,15 @@
       <form class="loginPosition container p-4" [formGroup]="loginForm" (ngSubmit)="onLogin()">
         <h2>Logar</h2>
         <div class="form-group">
-            <input class="form-control" placeholder="Email" type="email" formControlName="email">
+            <input class="form-control" placeholder="Email" type="email" formControlName="email" required>
         </div>
         <div class="form-group">
-          <input class="form-control" placeholder="Senha" type="password" formControlName="password">
+          <input class="form-control" placeholder="Senha" type="password" formControlName="password" required>
         </div>
         <div class="form-group">
-          <button type="submit" [disabled]="loading" class="btn btn-primary">Logar</button>
-          <img *ngIf="loading" src="./../../assets/loading.gif" />
+          <button type="submit" class="btn btn-lg btn-primary btn-block">Logar</button>
+          <button type="submit" href="#" class="btn btn-block btn-social btn-facebook" (click)="onLoginFacebook()"><span class="fa fa-facebook"></span> Facebook</button>
+          <button type="submit" href="#" class="btn btn-block btn-social btn-google" (click)="onLoginGoogle()"><span class="fa fa-google"></span> Google</button>
           <a routerLink="/registrar" class="btn btn-link">Registrar</a>
           <a routerLink="/admin" class="btn btn-link adminTextPosition">Admin</a>
         </div>

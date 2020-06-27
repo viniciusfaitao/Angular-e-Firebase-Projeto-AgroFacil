@@ -15,7 +15,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AdminComponent } from './components/loginAdmin/admin.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCD2l7SFPcwfs-ZsVmk7pmmtlUN8FHmZfs",
@@ -51,7 +51,7 @@ const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule
   ],
-  providers: [],
+  providers: [AngularFireAuth],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

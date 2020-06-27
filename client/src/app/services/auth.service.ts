@@ -9,7 +9,16 @@ export class AuthService {
     constructor(public afAuth: AngularFireAuth) {}
 
     
-    async login(email:string, password:string) {
+    async register(email:string, password:string) {
+        try{
+            const result = await this.afAuth.createUserWithEmailAndPassword(email, password);
+            return result;
+        }catch(error){
+            console.log(error);
+        }
+    }
+
+    async loginEmailUser(email:string, password:string) {
         try{
             const result = await this.afAuth.signInWithEmailAndPassword(email, password);
             return result;
@@ -18,9 +27,18 @@ export class AuthService {
         }
     }
 
-    async register(email:string, password:string) {
+    async loginFacebookUser(email:string, password:string) {
         try{
-            const result = await this.afAuth.createUserWithEmailAndPassword(email, password);
+            const result = await this.afAuth.signInWithEmailAndPassword(email, password);
+            return result;
+        }catch(error){
+            console.log(error);
+        }
+    }
+
+    async loginGoogleUser(email:string, password:string) {
+        try{
+            const result = await this.afAuth.signInWithEmailAndPassword(email, password);
             return result;
         }catch(error){
             console.log(error);
