@@ -1,11 +1,5 @@
 {
-  "targets": {
-    "agrofacil": {
-      "hosting": {
-        "client": [
-          "agrofacil"
-        ]
-      }
-    }
+  "projects": {
+    "default": "agrofacil"
   }
 }

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/User';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { map } from 'rxjs/operators';
+import * as firebase from 'firebase';
 
 @Injectable()
 export class AuthService {
@@ -27,18 +29,18 @@ export class AuthService {
         }
     }
 
-    async loginFacebookUser(email:string, password:string) {
+    async loginFacebookUser() {
         try{
-            const result = await this.afAuth.signInWithEmailAndPassword(email, password);
+            const result = await this.afAuth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
             return result;
         }catch(error){
             console.log(error);
         }
     }
 
-    async loginGoogleUser(email:string, password:string) {
+    async loginGoogleUser() {
         try{
-            const result = await this.afAuth.signInWithEmailAndPassword(email, password);
+            const result = await this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
             return result;
         }catch(error){
             console.log(error);
@@ -51,5 +53,9 @@ export class AuthService {
         }catch(error){
             console.log(error);
         }
+    }
+
+    isAuth(){
+        return this.afAuth.authState.pipe(map(auth => auth));
     }
 }
