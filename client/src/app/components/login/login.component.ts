@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { first } from 'rxjs/operators';
-import { AlertService } from '../../services/alert.service';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,55 +8,24 @@ import { AuthenticationService } from '../../services/authentication.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
-  loading = false;
-  submitted = false;
-  returnUrl: string;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-    private authenticationService: AuthenticationService,
-    private alertService: AlertService
-  ) {
-    if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/']);
-    }
+  loginUserData = {};
+
+  constructor(private authenticationService: AuthenticationService, private router: Router) {}
+
+  ngOnInit(){}
+    
+  loginUser() {
+    this.authenticationService.loginUser(this.loginUserData)
+    .subscribe(
+      res => {
+        console.log(res)
+        localStorage.setItem('token', res.token)
+        this.router.navigate(['/produtos'])
+
+      },
+      err => console.log(err)
+    )
   }
 
-  ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-    });
-
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-  }
-
-  get f() {
-    return this.loginForm.controls;
-  }
-
-  onSubmit() {
-    this.submitted = true;
-
-    if (this.loginForm.invalid) {
-      return;
-    }
-
-    this.loading = true;
-    this.authenticationService
-      .login(this.f.username.value, this.f.password.value)
-      .pipe(first())
-      .subscribe(
-        (data) => {
-          this.router.navigate([this.returnUrl]);
-        },
-        (error) => {
-          this.alertService.error(error);
-          this.loading = false;
-        }
-      );
-  }
 }
