@@ -12,7 +12,6 @@ import { ProductEditionComponent } from './components/product-edition/product-ed
 import { ProductsComponent } from './components/products/products.component';
 import { UserComponent } from './components/user/user.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { AdminComponent } from './components/loginAdmin/admin.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
@@ -40,7 +39,6 @@ const firebaseConfig = {
     ProductsComponent,
     UserComponent,
     NavbarComponent,
-    AdminComponent,
   ],
   imports: [
     ReactiveFormsModule,

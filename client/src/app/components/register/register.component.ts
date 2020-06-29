@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,25 +10,17 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
 
-  public isLogged = false;
-  public user: any;
-
   registerForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl('')
   })
 
-  constructor(private authService: AuthService, private router: Router) {}
-
-  async ngOnInit() {}
+  constructor(private authService: AuthService) {}
 
   async onRegister(){
     const {email, password} = this.registerForm.value;
     try{
-      const user = await this.authService.register(email, password);
-      if(user){
-        this.router.navigate(['/produtos'])
-      }
+      this.authService.register(email, password);
     }catch(error){
       console.log(error);
     }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -15,46 +15,50 @@ export class LoginComponent implements OnInit {
   public user: any;
 
   loginForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
   })
 
-  constructor(private authService: AuthService, private router: Router, public afAuth: AngularFireAuth) {}
+  constructor(private authService: AuthService, private router: Router, public afAuth: AngularFireAuth) { }
 
-  async ngOnInit() {}
-  
-  async onLogin(){
-    const {email, password} = this.loginForm.value;
-    try{
-      const user = await this.authService.loginEmailUser(email, password);
-      if(user){
-        this.router.navigate(['/produtos']);
-      }
-    }catch(error){
-      console.log(error);
-    }
+  ngOnInit() {
+    this.getCurrentUser();
   }
-  
-  async onLoginFacebook(){
-    try{
-      const user = await this.authService.loginFacebookUser();
-      if(user){
-        this.router.navigate(['/produtos']);
-      }
-    }catch(error){
+
+  onLogin() {
+    const { email, password } = this.loginForm.value;
+    try {
+      this.authService.loginEmailUser(email, password);
+    } catch (error) {
       console.log(error);
     }
   }
 
-  async onLoginGoogle(){
-    try{
-      const user = await this.authService.loginGoogleUser();
-      if(user){
-        this.router.navigate(['/produtos']);
-      }
-    }catch(error){
+  onLoginFacebook() {
+    try {
+      this.authService.loginFacebookUser();
+    } catch (error) {
       console.log(error);
     }
   }
 
+  onLoginGoogle() {
+    try {
+      this.authService.loginGoogleUser();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  getCurrentUser() {
+    this.authService.isAuth().subscribe(auth => {
+      if (auth) {
+        this.router.navigate(['/produtos']);
+        this.isLogged = true
+      } else {
+        this.isLogged = false
+        this.router.navigate(['/logar']);
+      }
+    })
+  }
 }

@@ -6,7 +6,6 @@ import { UserComponent } from './components/user/user.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductEditionComponent } from './components/product-edition/product-edition.component';
 import { ProductDescriptionComponent } from './components/product-description/product-description.component';
-import { AdminComponent } from './components/loginAdmin/admin.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
 
 const routes: Routes = [
@@ -17,10 +16,6 @@ const routes: Routes = [
   {
     path: 'registrar',
     component: RegisterComponent
-  },
-  {
-    path: 'admin',
-    component: AdminComponent
   },
   {
     path: 'usuario',
@@ -44,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'produtos'
+    redirectTo: 'logar'
   }
 ];
 
