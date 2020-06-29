@@ -16,12 +16,14 @@ export class AuthService {
                 console.log(user.user.email)
                 this.error = "";
                 firebase.auth().currentUser.sendEmailVerification();
+                this.router.navigate(['/logar']);
+                this.logout();
             }).catch((err) => {
                 console.log(err);
                 if (err.message === "Password should be at least 6 characters") {
-                    alert("A senha deve ter pelo menos 6 caracteres");
+                    window.alert("A senha deve ter pelo menos 6 caracteres");
                 } else if (err.message === "The email address is already in use by another account.") {
-                    alert("O endereço de email já está sendo usado");
+                    window.alert("O endereço de email já está sendo usado! Logue e vincule na aba Usuario!");
                 }
             })
     }
@@ -64,19 +66,7 @@ export class AuthService {
                 }
             }).catch((err) => {
                 if (err.email && err.credential && err.code === 'auth/account-exists-with-different-credential') {
-                    var googleProvider = new firebase.auth.GoogleAuthProvider();
-                    firebase.auth().signInWithPopup(googleProvider)
-                        .then((result) => {
-                            var credential = result.credential;
-                            var user = result.user;
-                            if (credential && user) {
-                                firebase.auth().currentUser.linkWithRedirect(facebookProvider)
-                                console.log('Vinculated')
-                            }
-                        }).catch((err) => {
-                            console.log("An error ocurred");
-                            this.error = err.mensage;
-                        });
+                    window.alert('O endereço de email já está sendo usado! Logue e vincule na aba Usuario!');
                 }
                 console.log("An error ocurred");
                 this.error = err.mensage;

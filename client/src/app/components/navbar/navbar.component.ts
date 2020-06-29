@@ -10,9 +10,9 @@ import { Observable } from 'rxjs';
   providers: [AuthService]
 })
 export class NavbarComponent implements OnInit{
-  public isLogged = false;
+  public isLogged: boolean = false;
   public user$: Observable<any> = this.authService.afAuth.user;
-  admin: boolean = false;
+  public admin: boolean = false;
   
   constructor( private authService: AuthService, private router: Router) {}
 
