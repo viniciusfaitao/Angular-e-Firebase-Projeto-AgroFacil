@@ -1,38 +1,37 @@
-<div class="registerBackground">
-  <div class="logoBackGround">
-    <img class="logoTam" routerLink="/logar" src="https://i.imgur.com/VmtJROa.png" />
-  </div>
-  <div class="card-body">
-    <form class="registerPosition container p-4" [formGroup]="registerForm" (ngSubmit)="onRegister()">
-      <div class="form-group">
-        <input class="form-control" placeholder="Email" type="email" formControlName="email" required>
-        <div
-          *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)"
-          class="alert alert-danger">
-          <div *ngIf="registerForm.controls['email'].errors.required">
-            Digite um email valido!
-          </div>
-          <div *ngIf="registerForm.controls['email'].errors.pattern">
-            Ex: Email@gmail.com
-          </div>
+<div class="logoBackGround">
+  <img class="logoSize" routerLink="/logar" src="https://i.imgur.com/VmtJROa.png" />
+</div>
+<div class="card-body">
+  <form class="registerPosition container p-4" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <div class="form-group">
+      <input class="form-control" placeholder="Email" type="email" formControlName="email" required>
+      <div
+        *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)"
+        class="alert alert-danger">
+        <div *ngIf="registerForm.controls['email'].errors.required">
+          Digite um email valido!
+        </div>
+        <div *ngIf="registerForm.controls['email'].errors.pattern">
+          Ex: Email@gmail.com
         </div>
       </div>
-      <div class="form-group">
-        <input class="form-control" placeholder="Senha" type="password" formControlName="password" required>
-        <div
-          *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)"
-          class="alert alert-danger">
-          <div *ngIf="registerForm.controls['password'].errors.required">
-            Digite uma senha valida!
-          </div>
+    </div>
+    <div class="form-group">
+      <input class="form-control" placeholder="Senha" type="password" formControlName="password" required>
+      <div
+        *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)"
+        class="alert alert-danger">
+        <div *ngIf="registerForm.controls['password'].errors.required">
+          Digite uma senha valida!
         </div>
       </div>
-      <div class="form-group">
-        <button type="submit" [disabled]="!registerForm.valid" href="/logar" class="btn btn-lg btn-primary btn-block">Registrar</button>
-      </div>
-      <div class="form-group mt-3">
-        <p>Você ja tem uma conta? <a routerLink="/logar">Logar</a></p>
-      </div>
-    </form>
-  </div>
+    </div>
+    <div class="form-group">
+      <button type="submit" [disabled]="!registerForm.valid" href="/logar"
+        class="btn btn-lg btn-primary btn-block">Registrar</button>
+    </div>
+    <div class="form-group mt-3">
+      <p>Você ja tem uma conta? <a routerLink="/logar">Logar</a></p>
+    </div>
+  </form>
 </div>

@@ -1,26 +1,28 @@
-<div class="navbar navbar-expand-lg navbar-dark" style="background-color: #17a2b8;" *ngIf="user$ | async as user">
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#teste" aria-controls="teste" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </nav>
-  <div class="collapse" id="teste">
-    <div class="navbar-expand-lg navbar-dark p-4">
-      <div class="nav-item active" *ngIf="user">
-        <a class="nav-link" (click)="onLogout()" routerLink="" routerLinkActive="active"><i class="fas fa-sign-out-alt"></i> Deslogar</a>
+<div *ngIf="user$ | async as user">
+  <input type="checkbox" id="check">
+  <label id="icone" for="check"><i class="fas fa-bars" style="font-size: x-large;"></i></label>
+  <div class="barra">
+    <nav>
+      <div *ngIf="user">
+        <a class="nav-link text" (click)="onLogout()" routerLink="" routerLinkActive="active"><img
+            src="https://www.flaticon.com/premium-icon/icons/svg/3005/3005563.svg" width="30" height="30"> Deslogar</a>
       </div>
-      <div class="nav-item active">
-        <a class="nav-link" routerLink="/usuario" routerLinkActive="active"><i class="fas fa-users"></i> Usuario</a>
+      <div *ngIf="user">
+        <a class="nav-link text" routerLink="/usuario" routerLinkActive="active"><img
+            src="https://image.flaticon.com/icons/svg/3088/3088282.svg" width="30" height="30"> Usuario</a>
       </div>
-      <div class="nav-item active">
-        <a class="nav-link" routerLink="/produtos" routerLinkActive="active"><i class="fas fa-book"></i> Produtos</a>
+      <div *ngIf="user">
+        <a class="nav-link text" routerLink="/produtos" routerLinkActive="active"><img
+            src="https://image.flaticon.com/icons/svg/3028/3028549.svg" width="30" height="30"> Produtos</a>
       </div>
-      <div class="nav-item active" *ngIf="admin">
-        <a class="nav-link" routerLink="/produtos/adicionar" routerLinkActive="active"><i class="fas fa-book"></i> Novo Produto</a>
+      <div *ngIf="admin">
+        <a class="nav-link text" routerLink="/produtos/adicionar" routerLinkActive="active"><i class="fas fa-book"></i>
+          Novo
+          Produto</a>
       </div>
-      <div class="nav-item" *ngIf="user">
-        <a class="nav-link" >{{ user.email }}</a>
+      <div *ngIf="user">
+        <a class="nav-link text">{{ user.email }}</a>
       </div>
-    </div>
+    </nav>
   </div>
 </div>

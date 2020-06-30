@@ -56,7 +56,6 @@ export class LoginComponent implements OnInit {
   getCurrentUser() {
     this.authService.isAuth().subscribe(auth => {
       if (auth) {
-        this.router.navigate(['/produtos']);
         this.isLogged = true
       } else {
         this.isLogged = false

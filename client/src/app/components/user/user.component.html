@@ -1,1 +1,8 @@
-<p>user works!</p>
+<div class="logoBackGround">
+    <img class="logoTam" routerLink="/logar" src="https://i.imgur.com/VmtJROa.png" />
+</div>
+<div class="container temporary" *ngIf="user$ | async as user" >
+    <img *ngIf="user.photoURL" src="{{user.photoURL}}" alt="">
+    <h2 *ngIf="user.displayName">Olá {{user.displayName}} </h2>
+    <h3>Ainda estamos desenvolvendo este ambiente, aguarde novidades!</h3>
+</div>

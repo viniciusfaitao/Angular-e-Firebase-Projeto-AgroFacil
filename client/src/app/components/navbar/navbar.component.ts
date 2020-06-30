@@ -10,9 +10,10 @@ import { Observable } from 'rxjs';
   providers: [AuthService]
 })
 export class NavbarComponent implements OnInit{
-  public isLogged: boolean = false;
+  
   public user$: Observable<any> = this.authService.afAuth.user;
   public admin: boolean = false;
+  public isLogged: boolean = false;
   
   constructor( private authService: AuthService, private router: Router) {}
 
@@ -32,7 +33,6 @@ export class NavbarComponent implements OnInit{
   getCurrentUser() {
     this.authService.isAuth().subscribe(auth => {
       if (auth) {
-        this.router.navigate(['/produtos']);
         this.isLogged = true
         if(auth.email === "agrofacilcontato@gmail.com"){
           console.log("Admin Logged")

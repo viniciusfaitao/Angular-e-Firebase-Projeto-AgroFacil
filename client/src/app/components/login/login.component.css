@@ -1,24 +1,24 @@
-.loginPosition{
+.loginPosition {
   margin-top: 50px;
 }
 
-.logo{
+.logo {
   width: 100%;
   cursor: pointer;
   position: absolute;
   top: 35%;
 }
 
-.firstPage{
+.firstPage {
   background-color: white;
   position: absolute;
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
   cursor: pointer;
   overflow: hidden;
 }
 
-.hid-firstPage{
+.hid-firstPage {
   top: 100%;
   height: 100%;
   position: relative;
@@ -26,15 +26,15 @@
   background: #EAFFB8;
 }
 
-.firstPage:hover > .hid-firstPage{
+.firstPage:hover>.hid-firstPage {
   top: -25px;
 }
 
-.hid-firstPage:hover > .firstPage{
+.hid-firstPage:hover>.firstPage {
   bottom: 0;
 }
 
-.text{
+.text {
   font-size: 20px;
   color: #389429;
   position: relative;
@@ -44,39 +44,36 @@
   text-align: -webkit-center;
 }
 
-.logoBackGround{
+.logoBackGround {
   text-align-last: center;
   background-color: white;
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
   height: auto;
-  box-shadow: 0px 15px 40px rgba(56,148,41,0.2);
+  box-shadow: 0px 15px 40px rgba(56, 148, 41, 0.2);
 }
 
-.logoSize{
+.logoSize {
   width: 60%;
   margin-top: 5px;
 }
 
-.adminTextPosition{
-  float: right;
-}
 
-.btn-social{
+.btn-social {
   position: relative;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   color: #fff;
-  border-color: rgba(0,0,0,0.2);
-
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
-.btn-facebook{
+.btn-facebook {
   background: #3b5998;
 }
 
-.btn-google{
+.btn-google {
   background: #dd4b39;
 }
+

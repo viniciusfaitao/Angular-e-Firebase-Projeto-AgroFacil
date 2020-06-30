@@ -1,4 +1,14 @@
-@media (min-width: 975px) {
+@media (min-width: 976px) {
+  .hidden-mobile {
+    display: none !important;
+  }
+
+  .logo{
+    width: 100%;
+  }
+}
+
+@media (max-width: 975px) {
   .hidden-desktop {
     display: none !important;
   }
