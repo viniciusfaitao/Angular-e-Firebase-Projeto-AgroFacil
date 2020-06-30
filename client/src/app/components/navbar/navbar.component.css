@@ -1,7 +1,8 @@
   .text {
     color: black;
-    font-family: cursive;
+    font-family: initial;
     font-size: large;
+    font-weight: bold;
   }
 
   #check {

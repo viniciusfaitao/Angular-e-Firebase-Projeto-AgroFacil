@@ -7,16 +7,13 @@
     box-shadow: 0px 15px 40px rgba(56, 148, 41, 0.2);
 }
 
-.logoTam {
-    width: 60%;
+.logoSize {
+    width: 55%;
     margin-top: 5px;
 }
 
-.temporary{
-    position: relative; 
-    top: 200px; 
+.temporary {
+    position: relative;
+    top: 200px;
     text-align: -webkit-center;
 }
-
-
-

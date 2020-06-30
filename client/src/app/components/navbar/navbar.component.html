@@ -20,8 +20,8 @@
           Novo
           Produto</a>
       </div>
-      <div *ngIf="user">
-        <a class="nav-link text">{{ user.email }}</a>
+      <div *ngIf="user.displayName">
+        <a class="nav-link text"> Olá {{ user.displayName }}</a>
       </div>
     </nav>
   </div>

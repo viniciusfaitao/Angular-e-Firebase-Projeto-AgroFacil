@@ -1,6 +1,99 @@
 <div class="logoBackGround">
-    <img class="logoTam" routerLink="/logar" src="https://i.imgur.com/VmtJROa.png" />
+    <img class="logoSize" routerLink="/produtos" src="https://i.imgur.com/VmtJROa.png" />
 </div>
-<div class="container temporary">
-    <h1>Em desenvolvimento</h1>
+<div class="textSelectionAnimal">
+    <h6>Selecione o tipo de animal</h6>
 </div>
+<div class="container">
+    <div type="button" class="dog to-left" id="dog">
+        <div class="backgroundDropdown slide">
+            <div class="backgroundAnimal">
+                <img class="imgAnimals" src="https://i.imgur.com/IwECYDC.png">
+            </div>
+            <h3 class="textDropdown">Cachorro</h3>
+        </div>
+    </div>
+    <div *ngIf="dog">
+
+    </div>
+
+    <div class="cat">
+        <div class="backgroundDropdown slide">
+            <div class="backgroundAnimal">
+                <img class="imgAnimals" src="https://i.imgur.com/VRfJerL.png" alt="">
+            </div>
+            <h3 class="textDropdown">Gato</h3>
+        </div>
+    </div>
+
+    <div class="bird">
+        <div class="backgroundDropdown slide">
+            <div class="backgroundAnimal">
+                <img class="imgAnimals" src="https://i.imgur.com/IRrE9g4.png" alt="">
+            </div>
+            <h3 class="textDropdown">Ave</h3>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .slide {
+        border-radius: 20px;
+        background-size: 200% 200%;
+        -webkit-transition: background-position 1s;
+        -moz-transition: background-position 1s;
+        transition: background-position 1s;
+        background-image: linear-gradient(to left, white 50%, #B4E243 0);
+        background-position: right;
+    }
+
+    .slide:hover {
+        background-position: left;
+    }
+
+
+    .textSelectionAnimal {
+        padding-top: 30px;
+        text-align: -webkit-center;
+    }
+
+    .container {
+        width: 100%;
+        padding-top: 10px;
+        padding-right: 50px;
+        padding-left: 50px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .backgroundDropdown {
+        background-color: white;
+        margin-top: 30px;
+        height: 93px;
+        border-radius: 25px;
+    }
+
+    .textDropdown {
+        font-weight: bold;
+        text-align: -webkit-center;
+        position: relative;
+        bottom: 65px;
+        left: 30px;
+    }
+
+    .backgroundAnimal {
+        border-radius: 25px;
+        background-color: #B4E243;
+        max-width: 93px;
+        width: 93px;
+        height: 93px;
+        text-align: center;
+    }
+
+    .imgAnimals {
+        width: 60px;
+        height: 55px;
+        margin-top: 20%;
+    }
+</style>

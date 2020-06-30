@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ProductAddComponent implements OnInit {
 
+  adminAc = "agrofacilcontato@gmail.com";
   public user$: Observable<any> = this.authService.afAuth.user;
   public admin: boolean = false;
   public isLogged: boolean = false;
@@ -25,9 +26,10 @@ export class ProductAddComponent implements OnInit {
     this.authService.isAuth().subscribe(auth => {
       if (auth) {
         this.isLogged = true
-        if(auth.email === "agrofacilcontato@gmail.com"){
+        if(auth.email === this.adminAc){
           console.log("Admin Logged")
           this.admin = true;
+          this.router.navigate(['/produtos/adicionar']);
         }else{
           this.admin = false;
           this.router.navigate(['/produtos']);
@@ -38,4 +40,5 @@ export class ProductAddComponent implements OnInit {
       }
     })
   }
+  
 }

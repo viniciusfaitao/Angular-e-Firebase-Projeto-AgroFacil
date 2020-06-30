@@ -57,6 +57,7 @@ export class LoginComponent implements OnInit {
     this.authService.isAuth().subscribe(auth => {
       if (auth) {
         this.isLogged = true
+        this.router.navigate(['/produtos']);
       } else {
         this.isLogged = false
         this.router.navigate(['/logar']);
