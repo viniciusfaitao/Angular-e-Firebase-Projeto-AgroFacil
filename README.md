@@ -1,6 +1,6 @@
 # ProjetoAgroFacil
  
-# APENAS MOBILE
+# Site MOBILE
  
 https://agrofacil.firebaseapp.com/logar
 
