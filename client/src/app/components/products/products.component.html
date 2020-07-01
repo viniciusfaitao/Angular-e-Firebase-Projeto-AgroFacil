@@ -5,39 +5,94 @@
     <h6>Selecione o tipo de animal</h6>
 </div>
 <div class="container">
-    <div type="button" class="dog to-left" id="dog">
-        <div class="backgroundDropdown slide">
+    <div class="dropdown" for="dog" *ngIf="!isCatOption && !isBirdOption">
+        <div class="backgroundDropdown slide" (click)="isCachorroOption = !isCachorroOption" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
             <div class="backgroundAnimal">
                 <img class="imgAnimals" src="https://i.imgur.com/IwECYDC.png">
             </div>
             <h3 class="textDropdown">Cachorro</h3>
         </div>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">
+                <div class="backgroundAnimal"></div>
+            </a>
+            <a class="dropdown-item" href="#">
+                <div class="backgroundAnimal"></div>
+            </a>
+            <a class="dropdown-item" href="#">
+                <div class="backgroundAnimal"></div>
+            </a>
+        </div>
     </div>
-    <div *ngIf="dog">
-
-    </div>
-
-    <div class="cat">
-        <div class="backgroundDropdown slide">
+    
+    <div class="dropdown" ng-hide="myValue" *ngIf="!isCachorroOption && !isBirdOption">
+        <div class="backgroundDropdown slide" (click)="isCatOption = !isCatOption" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
             <div class="backgroundAnimal">
-                <img class="imgAnimals" src="https://i.imgur.com/VRfJerL.png" alt="">
+                <img class="imgAnimals" src="https://i.imgur.com/VRfJerL.png">
             </div>
             <h3 class="textDropdown">Gato</h3>
         </div>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">
+                <div class="backgroundAnimal"></div>
+            </a>
+            <a class="dropdown-item" href="#">
+                <div class="backgroundAnimal"></div>
+            </a>
+            <a class="dropdown-item" href="#">
+                <div class="backgroundAnimal"></div>
+            </a>
+        </div>
     </div>
 
-    <div class="bird">
-        <div class="backgroundDropdown slide">
+    <div class="dropdown" *ngIf="!isCachorroOption && !isCatOption">
+        <div class="backgroundDropdown slide" (click)="isBirdOption = !isBirdOption" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
             <div class="backgroundAnimal">
-                <img class="imgAnimals" src="https://i.imgur.com/IRrE9g4.png" alt="">
+                <img class="imgAnimals" src="https://i.imgur.com/IRrE9g4.png">
             </div>
             <h3 class="textDropdown">Ave</h3>
+        </div>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">
+                <div class="backgroundAnimal"></div>
+            </a>
+            <a class="dropdown-item" href="#">
+                <div class="backgroundAnimal"></div>
+            </a>
+            <a class="dropdown-item" href="#">
+                <div class="backgroundAnimal"></div>
+            </a>
         </div>
     </div>
 </div>
 
 
 <style>
+
+    .dropdown-menu {
+        background-color: transparent;
+        background-color: transparent;
+        border: none;
+    }
+
+    .dropdown-item {
+        display: table-cell !important;
+        width: 100%;
+        padding: .25rem 1.5rem;
+        clear: both;
+        font-weight: 400;
+        color: #212529;
+        text-align: inherit;
+        white-space: nowrap;
+        background-color: transparent;
+        border: 0;
+        padding: 7px;
+    }
+
+
     .slide {
         border-radius: 20px;
         background-size: 200% 200%;
@@ -51,7 +106,6 @@
     .slide:hover {
         background-position: left;
     }
-
 
     .textSelectionAnimal {
         padding-top: 30px;

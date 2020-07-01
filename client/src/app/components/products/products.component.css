@@ -17,3 +17,13 @@
     top: 200px;
     text-align: -webkit-center;
 }
+
+#check {
+    display: none;
+}
+
+label {
+    display: block;
+    margin-bottom: .5rem;
+}
+
