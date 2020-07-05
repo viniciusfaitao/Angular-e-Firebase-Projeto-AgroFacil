@@ -43,7 +43,6 @@ export class RegisterComponent {
         this.router.navigate(['/produtos']);
       } else {
         this.isLogged = false
-        this.router.navigate(['/logar']);
       }
     })
   }

@@ -2,96 +2,100 @@
     <img class="logoSize" routerLink="/produtos" src="https://i.imgur.com/VmtJROa.png" />
 </div>
 <div class="textSelectionAnimal">
-    <h6>Selecione o tipo de animal</h6>
+    <h6 *ngIf="!isDogOption">Selecione o tipo de animal</h6>
+    <h6 *ngIf="isDogOption">Selecione o Porte de animal</h6>
 </div>
-<div class="container">
-    <div class="dropdown" for="dog" *ngIf="!isCatOption && !isBirdOption">
-        <div class="backgroundDropdown slide" (click)="isCachorroOption = !isCachorroOption" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
+<form class="container">
+    <div class="dropdown" *ngIf="!isCatOption && !isBirdOption">
+        <div class="backgroundDropdown slide" (click)="isDogOption = !isDogOption" id="dropdownMenuButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="backgroundAnimal">
                 <img class="imgAnimals" src="https://i.imgur.com/IwECYDC.png">
             </div>
             <h3 class="textDropdown">Cachorro</h3>
         </div>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">
-                <div class="backgroundAnimal"></div>
+        <div class="row" *ngIf="isDogOption">
+            <a class="col" href="#">
+                <div class="backgroundAnimalDropdown imgDog1"></div>
+                <div class="textAnimalDropdown">Pequeno</div>
             </a>
-            <a class="dropdown-item" href="#">
-                <div class="backgroundAnimal"></div>
+            <a class="col" href="#">
+                <div class="backgroundAnimalDropdown imgDog2"></div>
+                <div class="textAnimalDropdown">Médio</div>
             </a>
-            <a class="dropdown-item" href="#">
-                <div class="backgroundAnimal"></div>
+            <a class="col" href="#">
+                <div class="backgroundAnimalDropdown imgDog3"></div>
+                <div class="textAnimalDropdown">Grande</div>
             </a>
         </div>
     </div>
-    
-    <div class="dropdown" ng-hide="myValue" *ngIf="!isCachorroOption && !isBirdOption">
-        <div class="backgroundDropdown slide" (click)="isCatOption = !isCatOption" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
+
+    <div class="dropdown " ng-hide="myValue" *ngIf="!isDogOption && !isBirdOption">
+        <div class="backgroundDropdown slide" (click)="isCatOption = !isCatOption" id="dropdownMenuButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="backgroundAnimal">
                 <img class="imgAnimals" src="https://i.imgur.com/VRfJerL.png">
             </div>
             <h3 class="textDropdown">Gato</h3>
         </div>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">
-                <div class="backgroundAnimal"></div>
+        <div class="row" *ngIf="isCatOption">
+            <a class="col" href="#">
+                <div class="backgroundAnimalDropdown imgCat1"></div>
+                <div class="textAnimalDropdown">Adulto</div>
             </a>
-            <a class="dropdown-item" href="#">
-                <div class="backgroundAnimal"></div>
+            <a class="col" href="#">
+                <div class="backgroundAnimalDropdown imgCat2"></div>
+                <div class="textAnimalDropdown">Filhote</div>
             </a>
-            <a class="dropdown-item" href="#">
-                <div class="backgroundAnimal"></div>
+            <a class="col" href="#">
+                <div class="backgroundAnimalDropdown imgCat3"></div>
+                <div class="textAnimalDropdown">Castrado</div>
             </a>
         </div>
     </div>
 
-    <div class="dropdown" *ngIf="!isCachorroOption && !isCatOption">
-        <div class="backgroundDropdown slide" (click)="isBirdOption = !isBirdOption" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
+    <div class="dropdown " *ngIf="!isDogOption && !isCatOption">
+        <div class="backgroundDropdown slide " (click)="isBirdOption = !isBirdOption" id="dropdownMenuButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="backgroundAnimal">
                 <img class="imgAnimals" src="https://i.imgur.com/IRrE9g4.png">
             </div>
             <h3 class="textDropdown">Ave</h3>
         </div>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">
-                <div class="backgroundAnimal"></div>
+        <div class="row" *ngIf="isBirdOption">
+            <a class="col" href="#">
+                <div class="backgroundAnimalDropdown imgBird1"></div>
+                <div class="textAnimalDropdown">Galinhas</div>
             </a>
-            <a class="dropdown-item" href="#">
-                <div class="backgroundAnimal"></div>
+            <a class="col" href="#">
+                <div class="backgroundAnimalDropdown imgBird2"></div>
+                <div class="textAnimalDropdown">Passaros</div>
             </a>
-            <a class="dropdown-item" href="#">
-                <div class="backgroundAnimal"></div>
+            <a class="col" href="#">
+                <div class="backgroundAnimalDropdown imgBird3"></div>
+                <div class="textAnimalDropdown">Outros</div>
             </a>
         </div>
     </div>
-</div>
 
+    <button *ngIf="isDogOption || isCatOption || isBirdOption" (click)="clickReturn()" type="reset"
+        class="btn btnCloseModal" aria-label="Close"></button>
+</form>
 
 <style>
-
-    .dropdown-menu {
-        background-color: transparent;
-        background-color: transparent;
-        border: none;
+    .btnCloseModal {
+        position: absolute;
+        bottom: 25px;
+        width: 85px;
+        height: 60px;
+        border-radius: 30px;
+        background-repeat: space;
+        background-position: center;
+        background-size: 60%;
+        background-color: #60AD31;
+        background-image: url(https://i.imgur.com/lJ429gz.png) !important;
+        box-shadow: 5px 5px 20px #60AD31;
     }
-
-    .dropdown-item {
-        display: table-cell !important;
-        width: 100%;
-        padding: .25rem 1.5rem;
-        clear: both;
-        font-weight: 400;
-        color: #212529;
-        text-align: inherit;
-        white-space: nowrap;
-        background-color: transparent;
-        border: 0;
-        padding: 7px;
-    }
-
 
     .slide {
         border-radius: 20px;
@@ -126,15 +130,56 @@
         margin-top: 30px;
         height: 93px;
         border-radius: 25px;
+        z-index: 3;
     }
 
-    .textDropdown {
+    .textAnimalDropdown {
         font-weight: bold;
-        text-align: -webkit-center;
+        text-align: center;
+        color: #389429;
         position: relative;
-        bottom: 65px;
-        left: 30px;
+        animation-name: dropdownOption;
+        animation-duration: 1s;
     }
+
+    .backgroundAnimalDropdown {
+        border-radius: 25px;
+        background-color: #B4E243;
+        height: 130px;
+        text-align: center;
+        position: relative;
+        animation-name: dropdownOption;
+        animation-duration: 1s;
+    }
+
+    @keyframes dropdownOption {
+        0% {
+            height: 0px;
+        }
+
+        100% {
+            left: 0px;
+            top: 0px;
+        }
+    }
+
+    .dropdown {
+        animation-name: dropdown;
+        animation-duration: 1.5s;
+    }
+
+    @keyframes dropdown {
+        0% {
+            top: -20px;
+        }
+
+        100% {
+            left: 0px;
+            top: 0px;
+        }
+    }
+
+
 
     .backgroundAnimal {
         border-radius: 25px;
@@ -145,9 +190,98 @@
         text-align: center;
     }
 
+    .textDropdown {
+        font-weight: bold;
+        text-align: -webkit-center;
+        position: relative;
+        bottom: 65px;
+        left: 30px;
+    }
+
     .imgAnimals {
         width: 60px;
         height: 55px;
         margin-top: 20%;
+    }
+
+    .row {
+        margin-top: 20px;
+    }
+
+    .col {
+        padding: 0px 10px;
+    }
+
+    .imgDog1 {
+        background-image: url(https://i.imgur.com/EphGQTB.png) !important;
+        background-position: center;
+        background-size: 50%;
+        background-repeat-y: no-repeat;
+        background-repeat-x: no-repeat;
+    }
+
+    .imgDog2 {
+        background-image: url(https://i.imgur.com/EphGQTB.png) !important;
+        background-position: center;
+        background-size: 60%;
+        background-repeat-y: no-repeat;
+        background-repeat-x: no-repeat;
+    }
+
+    .imgDog3 {
+        background-image: url(https://i.imgur.com/EphGQTB.png) !important;
+        background-position: center;
+        background-size: 70%;
+        background-repeat-y: no-repeat;
+        background-repeat-x: no-repeat;
+    }
+
+    .imgCat1 {
+        background-image: url(https://i.imgur.com/GURbF2T.png) !important;
+        background-position: center;
+        background-size: 50%;
+        background-repeat-y: no-repeat;
+        background-repeat-x: no-repeat;
+    }
+
+    .imgCat2 {
+        background-image: url(https://i.imgur.com/NIR1xhA.png) !important;
+        background-position: center;
+        background-size: 35%;
+        background-repeat-y: no-repeat;
+        background-repeat-x: no-repeat;
+    }
+
+    .imgCat3 {
+        background-image: url(https://i.imgur.com/guY4AaD.png) !important;
+        background-position: center;
+        background-size: 50%;
+        background-repeat-y: no-repeat;
+        background-repeat-x: no-repeat;
+    }
+
+    .imgBird1 {
+        background-image: url(https://i.imgur.com/UaeqbS4.png) !important;
+        background-position: center;
+        background-size: 50%;
+        background-repeat-y: no-repeat;
+        background-repeat-x: no-repeat;
+    }
+
+    .imgBird2 {
+
+        background-image: url(https://i.imgur.com/IRrE9g4.png) !important;
+        background-position: center;
+        background-size: 50%;
+        background-repeat-y: no-repeat;
+        background-repeat-x: no-repeat;
+    }
+
+    .imgBird3 {
+        background-image: url(https://i.imgur.com/P9AwRP3.png) !important;
+        background-position: center;
+        background-size: 50%;
+        background-repeat-y: no-repeat;
+        background-repeat-x: no-repeat;
     }
 </style>

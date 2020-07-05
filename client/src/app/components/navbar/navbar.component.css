@@ -13,7 +13,7 @@
     cursor: pointer;
     padding: 25px;
     position: absolute;
-    z-index: 1;
+    z-index: 2;
   }
 
   .barra {
@@ -25,6 +25,7 @@
     left: -100%;
     border-radius: 50px;
     text-align: -webkit-center;
+    z-index: 1;
   }
 
   nav {

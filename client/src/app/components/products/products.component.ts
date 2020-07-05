@@ -9,12 +9,12 @@ import { Router } from '@angular/router';
   providers: [AuthService]
 })
 export class ProductsComponent implements OnInit {
-  public isCachorroOption: boolean = false;
+  public isDogOption: boolean = false;
   public isCatOption: boolean = false;
   public isBirdOption: boolean = false;
   public admin: boolean = false;
   public isLogged: boolean = false;
-  
+
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -32,4 +32,10 @@ export class ProductsComponent implements OnInit {
     })
   }
 
+
+  clickReturn(){
+    this.isDogOption = false;
+    this.isCatOption = false;
+    this.isBirdOption = false;
+  }
 }

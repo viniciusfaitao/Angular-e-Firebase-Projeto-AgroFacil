@@ -1,4 +1,4 @@
-@media (min-width: 768px) {
+@media (min-width: 901px) {
   .hidden-mobile {
     display: none !important;
   }
@@ -8,7 +8,7 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 900px) {
   .hidden-desktop {
     display: none !important;
   }
