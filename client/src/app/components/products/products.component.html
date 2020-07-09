@@ -7,8 +7,7 @@
 </div>
 <form class="container">
     <div class="dropdown" *ngIf="!isCatOption && !isBirdOption">
-        <div class="backgroundDropdown slide" (click)="isDogOption = !isDogOption" id="dropdownMenuButton"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="backgroundDropdown slide" (click)="isDogOption = !isDogOption">
             <div class="backgroundAnimal">
                 <img class="imgAnimals" src="https://i.imgur.com/IwECYDC.png">
             </div>
@@ -31,8 +30,7 @@
     </div>
 
     <div class="dropdown " ng-hide="myValue" *ngIf="!isDogOption && !isBirdOption">
-        <div class="backgroundDropdown slide" (click)="isCatOption = !isCatOption" id="dropdownMenuButton"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="backgroundDropdown slide" (click)="isCatOption = !isCatOption">
             <div class="backgroundAnimal">
                 <img class="imgAnimals" src="https://i.imgur.com/VRfJerL.png">
             </div>
@@ -55,8 +53,7 @@
     </div>
 
     <div class="dropdown " *ngIf="!isDogOption && !isCatOption">
-        <div class="backgroundDropdown slide " (click)="isBirdOption = !isBirdOption" id="dropdownMenuButton"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="backgroundDropdown slide " (click)="isBirdOption = !isBirdOption">
             <div class="backgroundAnimal">
                 <img class="imgAnimals" src="https://i.imgur.com/IRrE9g4.png">
             </div>
